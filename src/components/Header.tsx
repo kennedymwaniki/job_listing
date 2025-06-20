@@ -2,7 +2,7 @@ const Header = () => {
   return (
     <div
       style={{
-        backgroundImage: "url('src/assets/images/bg-header-desktop.svg')",
+        backgroundImage: "url('./images/bg-header-desktop.svg')",
         backgroundSize: "cover",
         height: "100px",
         fontSize: "2rem",
