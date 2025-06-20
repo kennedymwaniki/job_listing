@@ -37,7 +37,7 @@ const JoblistingComponent = () => {
             {filters.map((filter) => (
               <div
                 key={filter}
-                className="flex items-center bg-cyan-100 rounded overflow-hidden"
+                className="flex items-center bg-cyan-200 rounded overflow-hidden"
               >
                 <span className="px-2 py-1 font-semibold">{filter}</span>
                 <button

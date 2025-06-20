@@ -8,9 +8,7 @@ interface JobCardProps {
 const JobCard = ({ job, onFilterClick }: JobCardProps) => {
   return (
     <div
-      className={`p-4 mx-auto max-w-4xl sm:flex grid items-center justify-between gap-4 bg-gray-50 rounded-md shadow-md ${
-        job.featured ? "border-l-4 border-cyan-400" : ""
-      }`}
+      className={`p-4 mx-auto max-w-4xl sm:flex grid items-center justify-between gap-4 bg-gray-50 rounded-md shadow border-l-4 border-cyan-400 `}
     >
       <div className="grid gap-4 sm:flex">
         <div className="flex items-center space-x-4">
