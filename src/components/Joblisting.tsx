@@ -4,7 +4,6 @@ import jobListings from "../data.json";
 import type { JobListing } from "../types/types";
 
 const JoblistingComponent = () => {
-  // Cast the imported data to our defined type
   const jobs = jobListings as JobListing[];
   const [filters, setFilters] = useState<string[]>([]);
 
