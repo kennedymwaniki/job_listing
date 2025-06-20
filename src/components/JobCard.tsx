@@ -2,12 +2,15 @@ import type { JobListing } from "../types/types";
 
 interface JobCardProps {
   job: JobListing;
+  onFilterClick: (filter: string) => void;
 }
 
-const JobCard = ({ job }: JobCardProps) => {
+const JobCard = ({ job, onFilterClick }: JobCardProps) => {
   return (
     <div
-      className={`p-4 mx-auto max-w-4xl sm:flex grid items-center justify-between gap-4 bg-gray-50 rounded-md shadow-md  border-l-3 border-cyan-400 `}
+      className={`p-4 mx-auto max-w-4xl sm:flex grid items-center justify-between gap-4 bg-gray-50 rounded-md shadow-md ${
+        job.featured ? "border-l-4 border-cyan-400" : ""
+      }`}
     >
       <div className="grid gap-4 sm:flex">
         <div className="flex items-center space-x-4">
@@ -15,7 +18,7 @@ const JobCard = ({ job }: JobCardProps) => {
         </div>
         <div className="grid">
           <div className="flex items-center gap-2 ">
-            <h2 className="text-lg font-semibold text-cyan-200">
+            <h2 className="text-lg font-semibold text-cyan-700">
               {job.company}
             </h2>
             {job.new && (
@@ -33,9 +36,9 @@ const JobCard = ({ job }: JobCardProps) => {
           <div className="flex items-center gap-4 ">
             <p className="text-gray-500 justify-between flex gap-1 text-nowrap">
               <span>{job.postedAt}</span>
-              <span>.</span>
+              <span>·</span>
               <span>{job.contract}</span>
-              <span>.</span>
+              <span>·</span>
               <span>{job.location}</span>
             </p>
           </div>
@@ -43,24 +46,35 @@ const JobCard = ({ job }: JobCardProps) => {
       </div>
       <div>
         <div className="flex flex-wrap gap-4 items-center">
-          <span className="font-semibold bg-cyan-100 p-1 rounded">
+          <button
+            onClick={() => onFilterClick(job.role)}
+            className="font-semibold bg-cyan-100 p-1 rounded text-cyan-700 hover:bg-cyan-700 hover:text-white cursor-pointer"
+          >
             {job.role}
-          </span>
-          <span className="font-semibold bg-cyan-100 p-1 rounded">
+          </button>
+          <button
+            onClick={() => onFilterClick(job.level)}
+            className="font-semibold bg-cyan-100 p-1 rounded text-cyan-700 hover:bg-cyan-700 hover:text-white cursor-pointer"
+          >
             {job.level}
-          </span>
+          </button>
           {job.languages.map((language) => (
-            <span
+            <button
               key={language}
-              className="font-semibold bg-cyan-100 p-1 rounded"
+              onClick={() => onFilterClick(language)}
+              className="font-semibold bg-cyan-100 p-1 rounded text-cyan-700 hover:bg-cyan-700 hover:text-white cursor-pointer"
             >
               {language}
-            </span>
+            </button>
           ))}
           {job.tools.map((tool) => (
-            <span key={tool} className="font-semibold  bg-cyan-100 p-1 rounded">
+            <button
+              key={tool}
+              onClick={() => onFilterClick(tool)}
+              className="font-semibold bg-cyan-100 p-1 rounded text-cyan-700 hover:bg-cyan-700 hover:text-white cursor-pointer"
+            >
               {tool}
-            </span>
+            </button>
           ))}
         </div>
       </div>
